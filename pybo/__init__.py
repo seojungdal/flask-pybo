@@ -4,7 +4,6 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 
-import config
 
 from flaskext.markdown import Markdown # 마크다운
 
@@ -21,7 +20,7 @@ migrate = Migrate()
 
 def create_app():
     app = Flask(__name__) # Pybo 앱 생성
-    app.config.from_object(config) # app환경변수에 등록
+    app.config.from_envvar('APP_CONFIG_FILE')
 
     # ORM 초기화
     db.init_app(app)
