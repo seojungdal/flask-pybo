@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h5 class="my-3 border-bottom pb-2">질문등록</h5>
+<!--    전송방식 POST-->
+    <form method="post" class="post-form my-3">
+        {{ form.csrf_token }}
+<!--        오류표시-->
+        {% for field, errors in form.errors.items() %}
+        <div class="alert alert-danger" role="alert">
+            <strong>{{ form[field].label }}</strong>: {{ ','.join(errors) }}
+        </div>
+        {% endfor %}
+
+<!--제목입력창-->
+        <div class="form-group">
+            <label for="subject">제목</label>
+            <input type="text" class="form-control" name="subject" id="subject" value="{{ form.subject.data or '' }}">
+            <!--입력값 유지-->
+        </div>
+<!--내용입력창-->
+        <div class="form-group">
+            <label for="content">내용</label>
+            <textarea class="form-control" name="content" id="content" rows="5" >{{ form.content.data or '' }}</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">저장하기</button>
+<!--        똑같은 페이지 요청-->
+    </form>
+</div>
+{% endblock %}
+
+
+<!--기존방식(HTML 코드를 자동으로 생성하는 방식)-->
+<!--        {{ form.subject.label }}-->
+<!--&lt;!&ndash;        제목쓰기창 생성&ndash;&gt;-->
+<!--        {{ form.subject(class="form-control") }}-->
+
+
+<!--        {{ form.content.label }}-->
+<!--&lt;!&ndash;        내용쓰기창 생성&ndash;&gt;-->
+<!--        {{ form.content(class="form-control") }}-->

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no">
+<!--    부트스트랩 CSS-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+<!--    CSS-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>JD의 잡동사니</title>
+</head>
+<body>
+<!--navbar.html 가져오기-->
+{% include "navbar.html" %}
+
+{% block content %}
+{% endblock %}
+
+<!--    제이쿼리-->
+<script src="{{ url_for('static', filename='jquery-3.4.1.min.js') }}"></script>
+<!--    부트스트랩 JS-->
+<script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+
+<!--자바스크립트(삭제 버튼)-->
+{% block script %}
+{% endblock %}
+
+</body>
+</html>
